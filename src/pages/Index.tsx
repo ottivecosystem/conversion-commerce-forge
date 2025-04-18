@@ -1,13 +1,33 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from 'react';
+import Layout from '@/components/layout/Layout';
+import Hero from '@/components/home/Hero';
+import FeaturedCategories from '@/components/home/FeaturedCategories';
+import FeaturedProducts from '@/components/home/FeaturedProducts';
+import PromoSection from '@/components/home/PromoSection';
+import Testimonials from '@/components/home/Testimonials';
+import Newsletter from '@/components/home/Newsletter';
+import Brands from '@/components/home/Brands';
+import { useCartStore } from '@/lib/store';
 
 const Index = () => {
+  const { initCart } = useCartStore();
+
+  useEffect(() => {
+    // Initialize cart when page loads
+    initCart();
+  }, [initCart]);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <Hero />
+      <Brands />
+      <FeaturedCategories />
+      <FeaturedProducts />
+      <PromoSection />
+      <Testimonials />
+      <Newsletter />
+    </Layout>
   );
 };
 
